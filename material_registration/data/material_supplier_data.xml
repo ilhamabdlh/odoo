@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="supplier_tekstil_nusantara" model="material.supplier">
+        <field name="name">PT Tekstil Nusantara</field>
+    </record>
+    <record id="supplier_denim_jaya" model="material.supplier">
+        <field name="name">CV Denim Jaya</field>
+    </record>
+    <record id="supplier_kapas_indonesia" model="material.supplier">
+        <field name="name">PT Kapas Indonesia</field>
+    </record>
+</odoo>

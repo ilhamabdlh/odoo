@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="menu_material_root"
+        name="Material Registration"
+        sequence="10"/>
+    <menuitem
+        id="menu_material_materials"
+        name="Materials"
+        parent="menu_material_root"
+        action="action_material"
+        sequence="10"/>
+    <menuitem
+        id="menu_material_suppliers"
+        name="Suppliers"
+        parent="menu_material_root"
+        action="action_material_supplier"
+        sequence="20"/>
+</odoo>

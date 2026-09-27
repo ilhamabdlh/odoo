@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_material_tree" model="ir.ui.view">
+        <field name="name">material.material.tree</field>
+        <field name="model">material.material</field>
+        <field name="arch" type="xml">
+            <tree string="Materials">
+                <field name="material_code"/>
+                <field name="material_name"/>
+                <field name="material_type"/>
+                <field name="material_buy_price"/>
+                <field name="supplier_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_material_form" model="ir.ui.view">
+        <field name="name">material.material.form</field>
+        <field name="model">material.material</field>
+        <field name="arch" type="xml">
+            <form string="Material">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="material_code"/>
+                            <field name="material_name"/>
+                            <field name="material_type"/>
+                        </group>
+                        <group>
+                            <field name="material_buy_price"/>
+                            <field name="supplier_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_material_search" model="ir.ui.view">
+        <field name="name">material.material.search</field>
+        <field name="model">material.material</field>
+        <field name="arch" type="xml">
+            <search string="Materials">
+                <field name="material_code"/>
+                <field name="material_name"/>
+                <field name="material_type"/>
+                <field name="supplier_id"/>
+                <filter name="filter_fabric" string="Fabric" domain="[('material_type', '=', 'fabric')]"/>
+                <filter name="filter_jeans" string="Jeans" domain="[('material_type', '=', 'jeans')]"/>
+                <filter name="filter_cotton" string="Cotton" domain="[('material_type', '=', 'cotton')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_material_type" string="Material Type" context="{'group_by': 'material_type'}"/>
+                    <filter name="group_supplier" string="Related Supplier" context="{'group_by': 'supplier_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_material" model="ir.actions.act_window">
+        <field name="name">Materials</field>
+        <field name="res_model">material.material</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
