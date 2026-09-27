@@ -4,7 +4,7 @@ Modul Odoo 14 untuk registrasi material yang akan dijual.
 
 Field yang disimpan: Material Code, Material Name, Material Type (Fabric, Jeans, Cotton), Material Buy Price, dan Related Supplier. Semua wajib diisi. Material Buy Price di bawah 100 ditolak. Nilai 100 masih diterima.
 
-ERD: [docs/ERD.pdf](docs/ERD.pdf)
+![ERD Registrasi Material](docs/ERD.png)
 
 ## Install
 
@@ -50,12 +50,8 @@ curl -X POST http://localhost:8069/api/materials \
 
 ## Unit test
 
-```bash
-docker compose run --rm web odoo -d keda_test --db_host=db --db_user=odoo --db_password=odoo -i material_registration --test-enable --stop-after-init --without-demo=all
-```
-
-Kalau Odoo sudah terpasang di mesin:
+![Hasil unit test Odoo 14](docs/unit-test.png)
 
 ```bash
-./odoo-bin -d keda_test -i material_registration --test-enable --stop-after-init --without-demo=all
+./odoo-bin -d keda_test --addons-path=/path/ke/project,/path/ke/odoo/addons -i material_registration --test-enable --test-tags /material_registration --stop-after-init --without-demo=all
 ```

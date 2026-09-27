@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import json
+from unittest.mock import MagicMock
 
 from werkzeug.wrappers import Response
 
+from ..controllers import material_controller
 from ..controllers.material_controller import MaterialController
 from .common import MaterialCommon
 
@@ -16,13 +18,10 @@ class TestMaterialController(MaterialCommon):
     def setUp(self):
         super(TestMaterialController, self).setUp()
         self.controller = MaterialController()
-        # Patch the request name used by the controller, not the HTTP proxy.
-        from unittest.mock import patch
-        self.patcher = patch(
-            'odoo.addons.material_registration.controllers.material_controller.request'
-        )
-        self.request = self.patcher.start()
-        self.addCleanup(self.patcher.stop)
+        self._real_request = material_controller.request
+        self.request = MagicMock()
+        material_controller.request = self.request
+        self.addCleanup(setattr, material_controller, 'request', self._real_request)
         self.request.env = self.env
         self.request.make_response.side_effect = _make_response
         self.request.httprequest.get_data.return_value = '{}'
